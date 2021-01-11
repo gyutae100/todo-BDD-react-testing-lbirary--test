@@ -1,6 +1,7 @@
 import React, { Fragment, useCallback, useState, memo, useEffect } from 'react';
 
-const TodoItem = ({onAdd}) => {
+const TodoInsert = ({onAdd}) => {
+    console.count('TOdoInsert')
     const [inputValue, setInputValue] = useState('')
 
     const handleClick = useCallback((e) => {
@@ -8,8 +9,8 @@ const TodoItem = ({onAdd}) => {
 
         switch(eventFrom) {
             case 'add-button':
-                onAdd(inputValue)
                 setInputValue('')
+                onAdd(inputValue)
                 return
         }
     },[inputValue, onAdd])
@@ -31,4 +32,4 @@ const TodoItem = ({onAdd}) => {
     </div>
 };
 
-export default memo(TodoItem);
+export default memo(TodoInsert);

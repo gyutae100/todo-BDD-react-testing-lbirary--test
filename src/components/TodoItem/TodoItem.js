@@ -1,15 +1,13 @@
 import React, { Fragment, useCallback, useState, memo, useEffect } from 'react';
 
 const TodoItem = ({todo, onToggle, onModify, onDelete}) => {
+    console.count('todoItem')
     const {id, text, done} = todo
     const [isEditMode, setIsEditMode] = useState(false)
     const [inputValue, setInputValue] =useState('')
 
-    useEffect(()=> {
-        setInputValue(text)
-    }, [text])
-
     const handleClick = useCallback((e) => {
+        console.count('handleClick')
         const eventFrom = e.target.className
 
         switch(eventFrom) {
@@ -27,6 +25,7 @@ const TodoItem = ({todo, onToggle, onModify, onDelete}) => {
                 onDelete(id)
                 return
             case 'modify-button':
+                setInputValue(text)
                 setIsEditMode(true)
                 return
         }

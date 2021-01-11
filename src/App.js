@@ -1,29 +1,29 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 import TodoTemplate from './components/TodoTemplate';
 
 function App() {
+  console.count('App')
   const [todos, setTodos] = useState([])
   const refNextId = useRef(1)
-  const handleAddTodoItem=(text)=> {
+  const handleAddTodoItem= useCallback((text)=> {
     const nextId = refNextId.current
     refNextId.current++
 
-    setTodos([...todos , {
+    setTodos(todos =>[...todos , {
       id:nextId,
       text: text,
       done: false
     }])
-  }
+  }, [])
 
-  const handleDeleteTodoItem=(id)=> {
-    const filtedTodos = todos.filter((todo)=> todo.id !== id)
-    setTodos(filtedTodos)
-  }
+  const handleDeleteTodoItem= useCallback((id)=> {
+    setTodos(todos => todos.filter((todo)=> todo.id !== id))
+  },[])
 
-  const handleToggleTodoItem = (id) => {
-    const changedTodos = todos.map((todo)=>{
+  const handleToggleTodoItem = useCallback((id) => {
+    setTodos( todos=> todos.map((todo)=>{
       if(todo.id === id) {
         return {
           ...todo,
@@ -32,12 +32,12 @@ function App() {
       }
 
       return todo
-    })
-    setTodos(changedTodos)
-  }
+    }))
+  }, [])
 
-  const handleModifyTodoItem = ({id, text}) => {
-    const changedTodos = todos.map((todo)=>{
+  const handleModifyTodoItem = useCallback(({id, text}) => {
+    
+    setTodos(todos=>todos.map((todo)=>{
       if(todo.id === id) {
         return {
           ...todo,
@@ -46,9 +46,8 @@ function App() {
       }
 
       return todo
-    })
-    setTodos(changedTodos)
-  }
+    }))
+  }, [])
 
   return (
     <div className="App">
