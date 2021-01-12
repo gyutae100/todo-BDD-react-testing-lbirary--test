@@ -18,7 +18,7 @@ describe('<TodoInsert/>', ()=> {
         }
     }
 
-    it('rendering', () => {
+    it('renders', () => {
         const {input, addButton} = setUp()
 
         expect(input).toBeTruthy()

@@ -31,7 +31,7 @@ describe('<TodoItemList/>', ()=> {
         }
     }
 
-    it('rendering', ()=> {
+    it('renders', ()=> {
         const { getByText} = setUp()
         
         sampleTodos.forEach((element)=> {

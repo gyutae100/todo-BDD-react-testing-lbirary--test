@@ -51,7 +51,7 @@ describe('<TodoItem />', ()=> {
     /** 
      *  @brief for default mode 
     **/
-    it('rendering default mode', () => {
+    it('renders default mode', () => {
         const {span, deleteButton, modifyButton, queryByTestId } = setUpDefaultMode()
 
         expect(span).toBeTruthy()
@@ -110,7 +110,7 @@ describe('<TodoItem />', ()=> {
     /** 
     *  @brief for edit mode 
     **/
-    it('rendering edit mode', () => {
+    it('renders edit mode', () => {
         const {input, okButton, cancelButton, queryByTestId } = setUpEditMode()
 
         expect(input).toBeTruthy()
